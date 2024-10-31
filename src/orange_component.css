@@ -1,0 +1,16 @@
+.orange-compartment {
+    width: 60vw;
+    height: 50vh;
+    border: 2px dotted orange;
+    background-color: transparent;
+    overflow-y: auto;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .text-content {
+    font-size: 1vw;
+    line-height: 1.3;
+    text-align: left;
+  }
+  
