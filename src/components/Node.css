@@ -1,0 +1,38 @@
+.node {
+    position: absolute;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .node-nameDetail {
+    z-index: 1;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .ports {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ports.left {
+    left: -20px;
+  }
+  
+  .ports.right {
+    right: -20px;
+  }
+  
+  .port {
+    width: 12px;
+    height: 12px;
+    background-color: #555;
+    border-radius: 50%;
+    margin: 4px 0;
+    position: relative;
+  }

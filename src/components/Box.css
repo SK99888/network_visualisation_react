@@ -1,0 +1,36 @@
+.box {
+    position: absolute;
+    border: 2px dashed;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .edge {
+    position: absolute;
+    width: 100%;
+    height: 0;
+  }
+  
+  .edge.top {
+    top: 0;
+    left: 0;
+  }
+  
+  .symbol {
+    position: absolute;
+    top: -10px;
+    font-size: 12px;
+  }
+  
+  .symbol.cross::before {
+    content: '✕';
+  }
+  
+  .symbol.circle::before {
+    content: '●';
+  }
+  
+  .symbol.square::before {
+    content: '■';
+  }
