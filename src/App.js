@@ -13,8 +13,6 @@ const App = () => {
     { id: 'node4', x: 1300, y: 600, leftPorts: 1, rightPorts: 4, nameDetail: 'SGYL-8180-1B', backgroundColor: '#9e2626'},
     { id: 'node5', x: 700, y: 1200, leftPorts: 1, rightPorts: 1, nameDetail: 'SGYLIVI0102', backgroundColor: '#26729e'},
     { id: 'node6', x: 900, y: 1200, leftPorts: 1, rightPorts: 1, nameDetail: 'SGYLIVI0101', backgroundColor: '#26729e'},
-    { id: 'node7', x: 300, y: 200, leftPorts: 2, rightPorts: 1, nameDetail: 'UDDI-METNET-4A'},
-    { id: 'node8', x: 500, y: 200, leftPorts: 1, rightPorts: 2, nameDetail: 'UDDI-METNET-4B'},
   ]);
 
   const [portPositions, setPortPositions] = useState({});
