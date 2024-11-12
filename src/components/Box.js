@@ -1,7 +1,7 @@
 import React from 'react';
 import './Box.css';
 
-const Box = ({ x = 0, y = 0, edgeColor = '#000', size = 200, crosses = 0, circles = 0, squares = 0, children }) => {
+const Box = ({ x = 0, y = 0, edgeColor = '#000', boxWidth = 200, boxHeight=200, crosses = 0, circles = 0, squares = 0, children }) => {
   // Generate edge symbols
   const totalSymbols = crosses + circles + squares;
   const symbolElements = [];
@@ -29,8 +29,8 @@ const Box = ({ x = 0, y = 0, edgeColor = '#000', size = 200, crosses = 0, circle
       className="box"
       style={{
         borderColor: edgeColor,
-        width: `${size}px`,
-        height: `${size}px`,
+        width: `${boxWidth}px`,
+        height: `${boxHeight}px`,
         left: x,
         top: y,
         position: 'absolute'
@@ -38,11 +38,7 @@ const Box = ({ x = 0, y = 0, edgeColor = '#000', size = 200, crosses = 0, circle
     >
       <div className="edge top">{edgeSymbols}</div>
       {/* Right Edge Symbols */}
-      <div className="edge right">{/* You can add symbols here if needed */}</div>
-      {/* Bottom Edge Symbols */}
-      <div className="edge bottom">{/* You can add symbols here if needed */}</div>
-      {/* Left Edge Symbols */}
-      <div className="edge left">{/* You can add symbols here if needed */}</div>
+
       {children}
     </div>
   );

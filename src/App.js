@@ -7,8 +7,12 @@ import './App.css';
 
 const App = () => {
   const [nodes, setNodes] = useState([
-    { id: 'node1', x: 400, y: 600, leftPorts: 4, rightPorts: 1, nameDetail: 'UDDI-8180-1A' },
-    { id: 'node2', x: 700, y: 600, leftPorts: 1, rightPorts: 4, nameDetail: 'UDDI-8180-1B' },
+    { id: 'node1', x: 100, y: 400, leftPorts: 4, rightPorts: 1, nameDetail: 'UDDI-8180-1A'},
+    { id: 'node2', x: 300, y: 400, leftPorts: 1, rightPorts: 4, nameDetail: 'UDDI-8180-1B'},
+    { id: 'node3', x: 900, y: 400, leftPorts: 4, rightPorts: 1, nameDetail: 'SGYL-8180-1A'},
+    { id: 'node4', x: 1100, y: 400, leftPorts: 1, rightPorts: 4, nameDetail: 'SGYL-8180-1B'},
+    { id: 'node5', x: 500, y: 1000, leftPorts: 1, rightPorts: 1, nameDetail: 'SGYLIVI0102'},
+    { id: 'node6', x: 700, y: 1000, leftPorts: 1, rightPorts: 1, nameDetail: 'SGYLIVI0101'},
   ]);
 
   const [portPositions, setPortPositions] = useState({});
@@ -22,9 +26,34 @@ const App = () => {
 
   const links = [
     {
-      name: 'Link A',
+      name: 'LAG 1',
       source: { nodeId: 'node1', portId: 'right-0' },
       target: { nodeId: 'node2', portId: 'left-0' },
+    },
+    {
+      name: 'LAG 1',
+      source: {nodeId: 'node3', portId:'right-0'},
+      target: {nodeId: 'node4', portId:'left-0'},
+    },
+    {
+      name: 'LAG-7',
+      source: {nodeId: 'node2', portId:'right-3'},
+      target: {nodeId: 'node3', portId:'left-3'},
+    },
+    {
+      name: 'LAG 15',
+      source: {nodeId: 'node1', portId:'left-3'},
+      target: {nodeId: 'node5', portId:'left-0'},
+    },
+    {
+      name: 'LAG 13',
+      source: {nodeId: 'node5', portId:'right-0'},
+      target: {nodeId: 'node6', portId:'left-0'},
+    },
+    {
+      name: 'LAG 15',
+      source: {nodeId: 'node6', portId:'right-0'},
+      target: {nodeId: 'node4', portId:'right-3'},
     },
 
   ];
@@ -63,6 +92,10 @@ const App = () => {
         }
         return null;
       })}
+
+      <Box x={300} y={600} boxWidth={800} boxHeight={300} edgeColor='#9933ff' crosses={1} squares={4}>
+        <Box x={25} y={50} boxWidth={700} boxHeight={150} edgeColor='#f58d42' crosses={1} circles={4}></Box>
+      </Box>
     </div>
   );
 }
