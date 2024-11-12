@@ -4,6 +4,7 @@ import Node from './components/Node';
 import Box from './components/Box';
 import Link from './components/Link';
 import './App.css';
+import { type } from '@testing-library/user-event/dist/type';
 
 const App = () => {
   const [nodes, setNodes] = useState([
@@ -44,6 +45,7 @@ const App = () => {
       name: 'LAG 15',
       source: {nodeId: 'node1', portId:'left-3'},
       target: {nodeId: 'node5', portId:'left-0'},
+      type: 'orthogonal',
     },
     {
       name: 'LAG 13',
@@ -52,8 +54,9 @@ const App = () => {
     },
     {
       name: 'LAG 15',
-      source: {nodeId: 'node6', portId:'right-0'},
-      target: {nodeId: 'node4', portId:'right-3'},
+      source: {nodeId: 'node4', portId:'right-3'},
+      target: {nodeId: 'node6', portId:'right-0'},
+      type: 'orthogonal',
     },
 
   ];
@@ -87,6 +90,7 @@ const App = () => {
               startPortPos={startPortPos}
               endPortPos={endPortPos}
               name={link.name}
+              typeOfCurve={link.type}
             />
           );
         }
@@ -94,7 +98,9 @@ const App = () => {
       })}
 
       <Box x={300} y={600} boxWidth={800} boxHeight={300} edgeColor='#9933ff' crosses={1} squares={4}>
-        <Box x={25} y={50} boxWidth={700} boxHeight={150} edgeColor='#f58d42' crosses={1} circles={4}></Box>
+        <Box x={25} y={50} boxWidth={750} boxHeight={200} edgeColor='#f58d42' crosses={1} circles={4}>
+          <p>Dummy Data</p>
+        </Box>
       </Box>
     </div>
   );

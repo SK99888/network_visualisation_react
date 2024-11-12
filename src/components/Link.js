@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Link = ({ startPortPos, endPortPos, name }) => {
+const Link = ({ startPortPos, endPortPos, name, typeOfCurve = 'curved' }) => {
   // Get the start and end positions
   const x1 = startPortPos.x;
   const y1 = startPortPos.y;
@@ -21,6 +21,27 @@ const Link = ({ startPortPos, endPortPos, name }) => {
   const adjustedX2 = x2 - offsetX;
   const adjustedY2 = y2 - offsetY;
 
+  let pathData = '';
+
+  if (typeOfCurve === 'straight') {
+    // Straight line
+    pathData = `M${adjustedX1},${adjustedY1} L${adjustedX2},${adjustedY2}`;
+  } else if (typeOfCurve === 'curved') {
+    // Curved path
+    const controlPointOffset = 50;
+    pathData = `M${adjustedX1},${adjustedY1} C${adjustedX1 + controlPointOffset},${adjustedY1} ${adjustedX2 - controlPointOffset},${adjustedY2} ${adjustedX2},${adjustedY2}`;
+  } else if (typeOfCurve === 'orthogonal') {
+    // Orthogonal path (L-shaped)
+    const midX = adjustedX1;
+    const midY = adjustedY2;
+
+    pathData = `M${adjustedX1},${adjustedY1} L${midX},${midY} L${adjustedX2},${adjustedY2}`;
+  } else {
+    // Default to straight line if typeOfCurve is unrecognized
+    pathData = `M${adjustedX1},${adjustedY1} L${adjustedX2},${adjustedY2}`;
+  }
+
+
   return (
     <svg
       style={{
@@ -35,7 +56,7 @@ const Link = ({ startPortPos, endPortPos, name }) => {
     >
       {/* Draw a curved path */}
       <path
-        d={`M${adjustedX1},${adjustedY1} C${adjustedX1 + 50},${adjustedY1} ${adjustedX2 - 50},${adjustedY2} ${adjustedX2},${adjustedY2}`}
+        d={pathData}
         stroke="black"
         strokeWidth="2"
         fill="none"
