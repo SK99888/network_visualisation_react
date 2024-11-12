@@ -4,16 +4,17 @@ import Node from './components/Node';
 import Box from './components/Box';
 import Link from './components/Link';
 import './App.css';
-import { type } from '@testing-library/user-event/dist/type';
 
 const App = () => {
   const [nodes, setNodes] = useState([
-    { id: 'node1', x: 100, y: 400, leftPorts: 4, rightPorts: 1, nameDetail: 'UDDI-8180-1A'},
-    { id: 'node2', x: 300, y: 400, leftPorts: 1, rightPorts: 4, nameDetail: 'UDDI-8180-1B'},
-    { id: 'node3', x: 900, y: 400, leftPorts: 4, rightPorts: 1, nameDetail: 'SGYL-8180-1A'},
-    { id: 'node4', x: 1100, y: 400, leftPorts: 1, rightPorts: 4, nameDetail: 'SGYL-8180-1B'},
-    { id: 'node5', x: 500, y: 1000, leftPorts: 1, rightPorts: 1, nameDetail: 'SGYLIVI0102'},
-    { id: 'node6', x: 700, y: 1000, leftPorts: 1, rightPorts: 1, nameDetail: 'SGYLIVI0101'},
+    { id: 'node1', x: 300, y: 600, leftPorts: 4, rightPorts: 1, nameDetail: 'UDDI-8180-1A', backgroundColor: '#9e2626'},
+    { id: 'node2', x: 500, y: 600, leftPorts: 1, rightPorts: 4, nameDetail: 'UDDI-8180-1B', backgroundColor: '#9e2626'},
+    { id: 'node3', x: 1100, y: 600, leftPorts: 4, rightPorts: 1, nameDetail: 'SGYL-8180-1A',backgroundColor: '#9e2626'},
+    { id: 'node4', x: 1300, y: 600, leftPorts: 1, rightPorts: 4, nameDetail: 'SGYL-8180-1B', backgroundColor: '#9e2626'},
+    { id: 'node5', x: 700, y: 1200, leftPorts: 1, rightPorts: 1, nameDetail: 'SGYLIVI0102', backgroundColor: '#26729e'},
+    { id: 'node6', x: 900, y: 1200, leftPorts: 1, rightPorts: 1, nameDetail: 'SGYLIVI0101', backgroundColor: '#26729e'},
+    { id: 'node7', x: 300, y: 200, leftPorts: 2, rightPorts: 1, nameDetail: 'UDDI-METNET-4A'},
+    { id: 'node8', x: 500, y: 200, leftPorts: 1, rightPorts: 2, nameDetail: 'UDDI-METNET-4B'},
   ]);
 
   const [portPositions, setPortPositions] = useState({});
@@ -42,7 +43,7 @@ const App = () => {
       target: {nodeId: 'node3', portId:'left-3'},
     },
     {
-      name: 'LAG 15',
+      name: '',
       source: {nodeId: 'node1', portId:'left-3'},
       target: {nodeId: 'node5', portId:'left-0'},
       type: 'orthogonal',
@@ -53,10 +54,15 @@ const App = () => {
       target: {nodeId: 'node6', portId:'left-0'},
     },
     {
-      name: 'LAG 15',
+      name: '',
       source: {nodeId: 'node4', portId:'right-3'},
       target: {nodeId: 'node6', portId:'right-0'},
       type: 'orthogonal',
+    },
+    {
+      name: '',
+      source: {nodeId: 'node7', portId:'right-0'},
+      target: {nodeId: 'node8', portId:'left-0'},
     },
 
   ];
@@ -68,7 +74,7 @@ const App = () => {
           key={node.id}
           id={node.id}
           name={node.nameDetail}
-          backgroundColor="#f0f8ff"
+          backgroundColor={node.backgroundColor}
           leftPorts={node.leftPorts}
           rightPorts={node.rightPorts}
           x={node.x}
@@ -97,7 +103,7 @@ const App = () => {
         return null;
       })}
 
-      <Box x={300} y={600} boxWidth={800} boxHeight={300} edgeColor='#9933ff' crosses={1} squares={4}>
+      <Box x={500} y={800} boxWidth={800} boxHeight={300} edgeColor='#9933ff' crosses={1} squares={4}>
         <Box x={25} y={50} boxWidth={750} boxHeight={200} edgeColor='#f58d42' crosses={1} circles={4}>
           <p>Dummy Data</p>
         </Box>

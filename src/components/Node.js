@@ -86,8 +86,9 @@ const Node = ({
         left: x,
         top: y,
         position: 'absolute',
-        width: '120px',
+        width: '140px',
         height: '80px',
+        color: 'white',
       }}
     >
       <div className="ports left">{leftPortElements}</div>
